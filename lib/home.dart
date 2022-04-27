@@ -1,6 +1,10 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pertemuan_3/product.dart';
+import 'package:flutter_pertemuan_3/addproduct.dart';
+import 'package:flutter_pertemuan_3/transaction.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,13 +13,13 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Flutter Tutorials",
-      home: Main(),
+      home: cupertinoTab(),
     );
   }
 }
 
-class Main extends StatelessWidget {
-  const Main({Key? key}) : super(key: key);
+class classes extends StatelessWidget {
+  const classes({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -201,10 +205,53 @@ class Main extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
                 onPressed: () {},
               ),
-            )
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+// ignore: camel_case_types
+class cupertinoTab extends StatefulWidget {
+  const cupertinoTab({Key? key}) : super(key: key);
+
+  @override
+  State<cupertinoTab> createState() => _cupertinoTabState();
+}
+
+class _cupertinoTabState extends State<cupertinoTab> {
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_shopping_cart), label: "Product"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.payments_sharp), label: "Transaction"),
+        ],
+      ),
+      tabBuilder: (BuildContext context, int index) {
+        switch (index) {
+          case 0:
+            return classes();
+            break;
+
+          case 1:
+            return Product();
+            break;
+
+          case 2:
+            return Transaksi();
+            break;
+
+          default:
+            return classes();
+        }
+      },
     );
   }
 }

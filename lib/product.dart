@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
-import 'package:flutter_pertemuan_3/main.dart';
+import 'package:flutter_pertemuan_3/addproduct.dart';
 
 class Product extends StatelessWidget {
   const Product({Key? key}) : super(key: key);
@@ -21,7 +23,7 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
-  int addingItem = 1;
+  int addingItem = 3;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,12 +39,7 @@ class _MainState extends State<Main> {
               leading: Image.network(
                   "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.QQnZ0yM4NlzHzSXhHt8qgwHaHa%26pid%3DApi&f=1"),
               trailing: IconButton(
-                  onPressed: (() {
-                    setState(() {
-                      addingItem--;
-                    });
-                  }),
-                  icon: Icon(Icons.delete)),
+                  onPressed: (() {}), icon: Icon(Icons.info_outline)),
               title: Text(
                 "Brand New Shoes",
                 maxLines: 1,
@@ -61,9 +58,9 @@ class _MainState extends State<Main> {
         margin: EdgeInsets.only(bottom: 50),
         child: FloatingActionButton.extended(
           onPressed: () {
-            setState(() {
-              addingItem++;
-            });
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return AddProduct();
+            }));
           },
           icon: Icon(Icons.add),
           label: Text("Tambah"),
