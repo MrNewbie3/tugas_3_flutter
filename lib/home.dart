@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pertemuan_3/addtransaction.dart';
 import 'package:flutter_pertemuan_3/product.dart';
 import 'package:flutter_pertemuan_3/addproduct.dart';
 import 'package:flutter_pertemuan_3/transaction.dart';
@@ -203,7 +204,16 @@ class classes extends StatelessWidget {
                 icon: Icon(Icons.arrow_downward),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return prosesTransaksi();
+                      },
+                    ),
+                  );
+                },
               ),
             ),
           ],
